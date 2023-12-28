@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'org.leantech-common'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "http://localhost:8083/repository/maven-snapshots"
+            credentials {
+                username = "admin"
+                password = "admin123"
+            }
+            allowInsecureProtocol true
+        }
+    }
+}
+
+dependencies {
+    implementation "io.swagger.core.v3:swagger-annotations:$swagger"
+    implementation "io.swagger.core.v3:swagger-jaxrs2:$swagger"
+    implementation "org.projectlombok:lombok:$lombokVersion"
+
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+}
+
+test {
+    useJUnitPlatform()
+}
