@@ -1,0 +1,5 @@
+integration:
+  person-property:
+    base-url: "http://localhost:8082/api/v1/user"
+    save: "save"
+    verify: "verify"

@@ -1,2 +1,4 @@
 rootProject.name = 'leantech-common'
+include 'dto'
+include 'webclient'
 

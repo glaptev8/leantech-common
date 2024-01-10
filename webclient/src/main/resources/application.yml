@@ -1,0 +1,5 @@
+integration:
+  person-property:
+    base-url: ${PERSON_URL}
+    save: "save"
+    verify: "verify"

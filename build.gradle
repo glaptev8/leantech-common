@@ -1,41 +1,42 @@
-plugins {
-    id 'java'
-    id 'maven-publish'
-}
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
 
-group = 'org.leantech-common'
-version = '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
+    group = 'org.leantech-common'
+    version = '1.1-SNAPSHOT'
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-        }
-    }
     repositories {
-        maven {
-            url "http://localhost:8083/repository/maven-snapshots"
-            credentials {
-                username = "admin"
-                password = "admin123"
+        mavenCentral()
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
             }
-            allowInsecureProtocol true
+        }
+        repositories {
+            maven {
+                url "http://localhost:8083/repository/maven-snapshots"
+                credentials {
+                    username = "admin"
+                    password = "admin123"
+                }
+                allowInsecureProtocol true
+            }
         }
     }
-}
 
-dependencies {
-    implementation "io.swagger.core.v3:swagger-annotations:$swagger"
-    implementation "io.swagger.core.v3:swagger-jaxrs2:$swagger"
-    implementation "org.projectlombok:lombok:$lombokVersion"
+    dependencies {
+        implementation "io.swagger.core.v3:swagger-annotations:$swagger"
+        implementation "io.swagger.core.v3:swagger-jaxrs2:$swagger"
+        implementation "org.projectlombok:lombok:$lombokVersion"
 
-    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
-}
+        annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    }
 
-test {
-    useJUnitPlatform()
+    test {
+        useJUnitPlatform()
+    }
 }
