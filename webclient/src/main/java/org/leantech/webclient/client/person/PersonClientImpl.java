@@ -37,6 +37,22 @@ public class PersonClientImpl implements PersonClient {
   }
 
   @Override
+  public Mono<UserDto> userInfo(String email) {
+    var headers = new HttpHeaders();
+
+    integrationConfig
+      .getPersonProperty()
+      .getHeaders()
+      .forEach(header -> headers.add(header.getKey(), header.getValue()));
+
+    return sender.post(formUri(integrationConfig.getPersonProperty().getBaseUrl(), integrationConfig.getPersonProperty().getUserInfo()),
+                       email,
+                       new HashMap<>(),
+                       headers,
+                       UserDto.class);
+  }
+
+  @Override
   public Mono<VerificationStatusDto> verify(VerificationStatusDto verificationStatusDto) {
     var headers = new HttpHeaders();
 

@@ -10,5 +10,7 @@ import reactor.core.publisher.Mono;
 public interface PersonClient extends Client {
   Mono<UserDto> save(UserSaveDto userSaveDto);
 
+  Mono<UserDto> userInfo(String email);
+
   Mono<VerificationStatusDto> verify(VerificationStatusDto verificationStatusDto);
 }

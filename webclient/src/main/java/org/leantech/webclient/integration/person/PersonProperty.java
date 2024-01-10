@@ -14,4 +14,5 @@ import lombok.NoArgsConstructor;
 public class PersonProperty extends Base {
   private String save;
   private String verify;
+  private String userInfo;
 }
