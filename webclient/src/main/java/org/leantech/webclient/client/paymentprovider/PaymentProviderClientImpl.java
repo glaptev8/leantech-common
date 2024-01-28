@@ -37,11 +37,14 @@ public class PaymentProviderClientImpl implements PaymentProviderClient {
 
   @Override
   public Mono<PayOutResponse> payOut(ProviderRequestDto providerRequestDto) {
+    HttpHeaders httpHeaders = new HttpHeaders();
+    httpHeaders.add("Authorization", "Basic " + Base64.getEncoder().encodeToString(("test" + ":" + "test").getBytes()));
+
     return sender.post(formUri(integrationConfig.getPaymentProviderProperty().getBaseUrl(),
                                integrationConfig.getPaymentProviderProperty().getPayOut()),
                        providerRequestDto,
                        Map.of(),
-                       HttpHeaders.EMPTY,
+                       httpHeaders,
                        PayOutResponse.class);
   }
 }
