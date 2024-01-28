@@ -1,4 +1,4 @@
-package org.leantech.webclient.integration.person;
+package org.leantech.webclient.integration.paymentprovider;
 
 import org.leantech.webclient.integration.Base;
 
@@ -11,9 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class PersonProperty extends Base {
-  private String save;
-  private String verify;
-  private String userInfo;
-  private String profile;
+public class PaymentProviderProperty extends Base {
+  private String transaction;
+  private String payOut;
 }

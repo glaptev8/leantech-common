@@ -1,4 +1,4 @@
-package org.leantech.webclient.integration.person;
+package org.leantech.webclient.integration.user;
 
 import org.leantech.webclient.integration.Base;
 
@@ -9,11 +9,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class PersonProperty extends Base {
-  private String save;
-  private String verify;
-  private String userInfo;
-  private String profile;
+public class UserProperty extends Base {
 }

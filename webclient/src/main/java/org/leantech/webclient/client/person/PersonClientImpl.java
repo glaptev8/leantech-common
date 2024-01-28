@@ -1,7 +1,9 @@
 package org.leantech.webclient.client.person;
 
 import java.util.HashMap;
+import java.util.Map;
 
+import org.leantech.person.dto.ProfileDto;
 import org.leantech.person.dto.UserDto;
 import org.leantech.person.dto.UserSaveDto;
 import org.leantech.person.dto.VerificationStatusDto;
@@ -66,5 +68,15 @@ public class PersonClientImpl implements PersonClient {
                        new HashMap<>(),
                        headers,
                        VerificationStatusDto.class);
+  }
+
+  @Override
+  public Mono<ProfileDto> getProfile(String profileUid) {
+    return sender.get(formUri(integrationConfig.getPersonProperty().getBaseUrl(),
+                              integrationConfig.getPersonProperty().getProfile(),
+                              profileUid),
+                      Map.of(),
+                      HttpHeaders.EMPTY,
+                      ProfileDto.class);
   }
 }

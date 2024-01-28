@@ -26,6 +26,7 @@ public class UserDto {
   private ProfileType profileType;
   private boolean isPasswordSet;
   private boolean isSocial;
+  private String country;
   private boolean is2faEnabled;
   private String secretKey;
 }
